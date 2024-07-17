@@ -1,4 +1,5 @@
 from django.db import models
+from classroom_period.models import ClassroomPeriod
 
 # Create your models here.
 
@@ -21,6 +22,7 @@ from django.db import models
 #         return self.name
     
 class Course(models.Model):
+    id = models.AutoField(primary_key=True)
     name= models.CharField(max_length=20)
     description = models.TextField()
     location = models.TextField()
@@ -31,5 +33,7 @@ class Course(models.Model):
     course_trainer= models.CharField(max_length=20)
     course_students= models.PositiveSmallIntegerField()
     course_date = models.DateField()
+    classes = models.ManyToManyField(ClassroomPeriod, related_name='courses')
+
     def __str__(self):
         return f"{self.name} {self.description}"
