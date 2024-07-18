@@ -1,7 +1,9 @@
 from django.db import models
+
 # from classroom_period.models import ClassroomPeriod
 
     
+
 class Courses(models.Model):
     id = models.AutoField(primary_key=True)
     name= models.CharField(max_length=20)

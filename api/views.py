@@ -10,7 +10,6 @@ from classes.models import Class
 from .serializers import StudentSerializer
 from classroom_period.models import ClassroomPeriod
 from .serializers import ClassroomPeriodSerializer
-# from classes.models import ClassroomPeriod
 from .serializers import ClassesSerializer
 from course.models import Courses
 from .serializers import CoursesSerializer
@@ -161,7 +160,7 @@ class CourseDetailView(APIView):
         course.delete()
         return Response(status=status.HTTP_202_ACCEPTED)
     
-class CrassromPeriodDetailView(APIView):
+class ClassroomPeriodDetailView(APIView):
     def get (self, request,id):
         classrom_period = ClassroomPeriod.objects.get(id = id)
         serializer = ClassroomPeriodSerializer(classrom_period)
