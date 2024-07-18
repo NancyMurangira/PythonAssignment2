@@ -1,27 +1,8 @@
 from django.db import models
-from classroom_period.models import ClassroomPeriod
+# from classroom_period.models import ClassroomPeriod
 
-# Create your models here.
-
-# class Course(models.Model):
-#     id = models.AutoField(primary_key=True)
-#     syllabus = models.CharField(max_length=200)
-#     name = models.CharField(max_length=100)
-#     department = models.CharField(max_length=100)
-#     prerequisites = models.TextField(blank=True, null=True)
-#     description = models.TextField(blank=True, null=True)
-#     teacher = models.ForeignKey(Teacher, on_delete=models.SET_NULL, null=True, related_name='courses')
-#     created_at = models.DateTimeField(auto_now_add=True)
-#     updated_at = models.DateTimeField(auto_now=True)
-#     trimester = models.PositiveSmallIntegerField()
-#     course_head = models.CharField(max_length=100)
-#     enrollment_limit = models.IntegerField()
-#     classes = models.ManyToManyField(Class, related_name='courses')
     
-#     def __str__(self):
-#         return self.name
-    
-class Course(models.Model):
+class Courses(models.Model):
     id = models.AutoField(primary_key=True)
     name= models.CharField(max_length=20)
     description = models.TextField()
@@ -33,7 +14,7 @@ class Course(models.Model):
     course_trainer= models.CharField(max_length=20)
     course_students= models.PositiveSmallIntegerField()
     course_date = models.DateField()
-    classes = models.ManyToManyField(ClassroomPeriod, related_name='courses')
+    # classes = models.ManyToManyField(ClassroomPeriod, related_name='courses')
 
     def __str__(self):
         return f"{self.name} {self.description}"
