@@ -126,7 +126,7 @@ class TeacherDetailView(APIView):
 class ClassDetailView(APIView):
     def get (self, request,id):
         classes= Class.objects.get(id = id)
-        serializer = ClassSerializer(classes)
+        serializer = ClassesSerializer(classes)
         return Response(serializer.data)
     def put (self, request,id):
         classes = Class.objects.get(id = id)
