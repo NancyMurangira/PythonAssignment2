@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class ClassroomPeriodConfig(AppConfig):
+class ClassPeriodConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'classroom_period'
+    name = 'class_period'

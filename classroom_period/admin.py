@@ -2,9 +2,9 @@ from django.contrib import admin
 
 # Register your models here.
 
-from.models import ClassroomPeriod
+from.models import ClassPeriod
 
-admin.site.register(ClassroomPeriod)
+admin.site.register(ClassPeriod)
 
 
 

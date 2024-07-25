@@ -5,7 +5,7 @@ from django.db import models
 # Create your models here.
 
 
-class ClassroomPeriod(models.Model):
+class ClassPeriod(models.Model):
 
    start_time=models.TimeField()
    end_time=models.TimeField()

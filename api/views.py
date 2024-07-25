@@ -8,8 +8,8 @@ from rest_framework import status
 from student.models import Student
 from classes.models import Class
 from .serializers import StudentSerializer
-from classroom_period.models import ClassroomPeriod
-from .serializers import ClassroomPeriodSerializer
+from class_period.models import ClassPeriod
+from .serializers import ClassPeriodSerializer
 from .serializers import ClassesSerializer
 from course.models import Courses
 from .serializers import CoursesSerializer
@@ -30,10 +30,10 @@ class StudentView(APIView):
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
-class ClassroomPeriodView(APIView):
+class ClassPeriodView(APIView):
     def get(self,request):
-        classperiods = ClassroomPeriod.objects.all()
-        serializer = ClassroomPeriodSerializer(classperiods,many=True)
+        classperiods = ClassPeriod.objects.all()
+        serializer = ClassPeriodSerializer(classperiods,many=True)
         return Response(serializer.data)
     def post(self, request):
         serializer = ClassesSerializer(data= request.data)
@@ -160,14 +160,14 @@ class CourseDetailView(APIView):
         course.delete()
         return Response(status=status.HTTP_202_ACCEPTED)
     
-class ClassroomPeriodDetailView(APIView):
+class ClassPeriodDetailView(APIView):
     def get (self, request,id):
-        classrom_period = ClassroomPeriod.objects.get(id = id)
-        serializer = ClassroomPeriodSerializer(classrom_period)
+        class_period = ClassPeriod.objects.get(id = id)
+        serializer = ClassPeriodSerializer(class_period)
         return Response(serializer.data)
     def put (self, request,id):
-        classroom_period = ClassroomPeriod.objects.get(id = id)
-        serializer = ClassroomPeriodSerializer(classroom_period,data=request.data)
+        class_period = ClassPeriod.objects.get(id = id)
+        serializer = ClassPeriodSerializer(class_period,data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -175,6 +175,6 @@ class ClassroomPeriodDetailView(APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
     def delete(self, request, id):
-        classroom_period = ClassroomPeriod.objects.get(id = id)
-        classroom_period.delete()
+        class_period = ClassPeriod.objects.get(id = id)
+        class_period.delete()
         return Response(status=status.HTTP_202_ACCEPTED)
